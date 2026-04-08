@@ -128,3 +128,12 @@ LAB SETUP INSTRUCTIONS
 import express from "express";
 
 const app = express();
+
+// TODO-2: GET /echo
+app.get("/echo", (req, res) => {
+  const { name, age } = req.query;
+  if (!name || !age) {
+    return res.status(400).json({ ok: false, error: "name & age required" });
+  }
+  res.json({ ok: true, name, age, msg: `Hello ${name}, you are ${age}` });
+});
