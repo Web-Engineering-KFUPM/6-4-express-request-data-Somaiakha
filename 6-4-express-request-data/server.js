@@ -155,3 +155,11 @@ app.param("userId", (req, res, next, userId) => {
   req.userIdNum = num;
   next();
 });
+
+// TODO-5: GET /users/:userId
+app.get("/users/:userId", (req, res) => {
+  res.json({ ok: true, userId: req.userIdNum });
+});
+
+// TODO-1: Start server
+app.listen(3000, () => console.log("API running at http://localhost:3000"));
