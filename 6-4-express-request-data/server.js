@@ -144,3 +144,14 @@ app.get("/profile/:first/:last", (req, res) => {
   const { first, last } = req.params;
   res.json({ ok: true, fullName: `${first} ${last}` });
 });
+
+
+// TODO-4: app.param middleware
+app.param("userId", (req, res, next, userId) => {
+  const num = Number(userId);
+  if (!Number.isInteger(num) || num <= 0) {
+    return res.status(400).json({ ok: false, error: "userId must be positive number" });
+  }
+  req.userIdNum = num;
+  next();
+});
