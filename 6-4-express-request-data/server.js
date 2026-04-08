@@ -137,3 +137,10 @@ app.get("/echo", (req, res) => {
   }
   res.json({ ok: true, name, age, msg: `Hello ${name}, you are ${age}` });
 });
+
+
+// TODO-3: GET /profile/:first/:last
+app.get("/profile/:first/:last", (req, res) => {
+  const { first, last } = req.params;
+  res.json({ ok: true, fullName: `${first} ${last}` });
+});
